@@ -1,0 +1,140 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.smartnewsvillaadmin.utilities;
+
+/**
+ *
+ * @author bhavin
+ */
+public class EmailTeplates {
+
+    public String codesent(String fullname, String url, String code) {
+
+        StringBuilder myvar = new StringBuilder();
+        myvar.append("<table align='center' cellspacing='0' cellpadding='0' style='font-size: 15px;font-family: \"Raleway\", \"Helvetica Neue\", Helvetica, Arial, sans-serif;'>")
+                .append("<tr>")
+                .append("<td>")
+                .append("<img style='width: 15%;' src='" + Constant.URL + "/assets/images/logo.png'/>")
+                .append("</td>")
+                .append("</tr>")
+                .append("<tr>")
+                .append("<td>")
+                .append("<h3>")
+                .append("Dear ")
+                .append(fullname)
+                .append(",")
+                .append("</h3>")
+                .append("<br/></td>")
+                .append("<tr>")
+                .append("<td style='  padding-bottom: 6px;'>")
+                .append("Thank you very much for registering with the Last Mile Platform.We welcome you to our platform.")
+                .append("</td></tr>")
+                .append("<tr>")
+                .append("<td style='  padding-bottom: 6px;'>")
+                .append("Your security code is : ")
+                .append(code)
+                .append("</td>")
+                .append("</tr>")
+                .append("<tr>")
+                .append("<td style='  padding-bottom: 15px;'>")
+                .append("Please click on below link and enter the code to validate your registration.")
+                .append("</td>")
+                .append("</tr>")
+                .append("<tr>")
+                .append("<td style='  border-collapse: collapse;border-radius:3px;text-align:center;display:block;border:solid 1px #009fdf;  max-width: 187px;background-color:#47a2ea;  color: white;'>")
+                .append("<a style='    color: #FFFFFF;   text-decoration: none;   display: block;font-weight: 600;padding: 15px 0px 15px 0px;'")
+                .append(" href='")
+                .append(url)
+                .append("'>Click here to activate </a>")
+                .append("</td>")
+                .append("</tr>")
+                .append("<tr>")
+                .append("<td>")
+                .append("<br/><br/>")
+                .append(" Thank you very much.<br/>The Last Mile Team<br/>support@lastmile.com")
+                .append("<br/>")
+                .append("<br/><br/><br/>")
+                .append("</td>")
+                .append("</tr>")
+                .append("")
+                .append("<tr>")
+                .append("<td class='wrapper last' style='color: #fff;background-color: black;'><span style='font-size:12px;'><i>")
+                .append("")
+                .append("This ia a system generated email and reply is not required.</i></span>")
+                .append("</td>")
+                .append("<td class='wrapper last' style='color: #fff;background-color: black;'><span style='font-size:12px;'><i>")
+                .append("")
+                .append("&copy; Last Mile 2016.</i></span>")
+                .append("</td>")
+                .append("</tr>")
+                .append("</table>");
+
+        return myvar.toString();
+    }
+
+    public String forgotresent(String fullname, String url, String code) {
+        StringBuilder myvar = new StringBuilder();
+        myvar.append("<table align='center' cellspacing='0' cellpadding='0' style='font-size: 15px;font-family: \"Raleway\", \"Helvetica Neue\", Helvetica, Arial, sans-serif;'>")
+                .append("<tr>")
+                .append("<td>")
+                .append("<img style='width: 15%;' src='" + Constant.URL + "/assets/images/logo.png'/>")
+                .append("</td>")
+                .append("</tr>")
+                .append("<tr>")
+                .append("<td>")
+                .append("<h3>")
+                .append("Dear ")
+                .append(fullname)
+                .append(",")
+                .append("</h3>")
+                .append("<br/></td>")
+                .append("<tr>")
+                .append("<td style='  padding-bottom: 6px;'>")
+                .append("You have requested to retrieve your password.")
+                .append("</td>")
+                .append("</tr>")
+                .append("<tr>")
+                .append("<td style='  padding-bottom: 6px;'>")
+                .append("To reset your password,please click on below link and provide 6 digit code.")
+                .append("</td>")
+                .append("</tr>")
+                .append("<tr>")
+                .append("<td style='  padding-bottom: 10px;'>")
+                .append("Your security code is : ")
+                .append(code)
+                .append("</td>")
+                .append("</tr>")
+                .append("<tr>")
+                .append("<td style='  border-collapse: collapse;border-radius:3px;text-align:center;display:block;border:solid 1px #009fdf;  max-width: 257px;background-color:#47a2ea;  color: white;'>")
+                .append("<a style='    color: #FFFFFF;   text-decoration: none;   display: block;font-weight: 600;padding: 15px 0px 15px 0px;'")
+                .append(" href='")
+                .append(url)
+                .append("'>Click here to reset password  </a>")
+                .append("</td>")
+                .append("</tr>")
+                .append("<tr>")
+                .append("<td>")
+                .append("<br/><br/>")
+                .append(" Thank you very much.<br/>The Last Mile Team<br/>support@lastmile.com")
+                .append("<br/>")
+                .append("<br/><br/><br/>")
+                .append("</td>")
+                .append("</tr>")
+                .append("")
+                .append("<tr>")
+                .append("<td class='wrapper last' style='color: #fff;background-color: black;'><span style='font-size:12px;'><i>")
+                .append("")
+                .append("This ia a system generated email and reply is not required.</i></span>")
+                .append("</td>")
+                .append("<td class='wrapper last' style='color: #fff;background-color: black;'><span style='font-size:12px;'><i>")
+                .append("")
+                .append("&copy; Last Mile 2016.</i></span>")
+                .append("</td>")
+                .append("</tr>")
+                .append("</table>");
+        return myvar.toString();
+    }
+}
