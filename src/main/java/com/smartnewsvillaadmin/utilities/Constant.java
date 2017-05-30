@@ -35,10 +35,10 @@ public class Constant {
     public static final String FORGOTPASS = "Forgot Password";
     public static final String SELECT = "---Select---";
 
-    public static String FILEUPLOADPATH = "c:/upload/SmartSell/";//Do not remove "/"
+    public static String FILEUPLOADPATH = "c:/upload/SmartNewsVilla/";//Do not remove "/"
 //    public static String FILEUPLOADPATH = "/home/bhavin/MuddyData/upload/Muddy/";//with read wirte execute permission
 
-    public static String PARENTFOLDERNAME = "SmartSellFiles";
+    public static String PARENTFOLDERNAME = "SmartNewsVillaFiles";
     public static String ADMINFOLDERNAME = "Admin";
     public static String USERSFOLDERNAME = "Users";
     public static String PUBLICFOLDERERNAME = "Public";

@@ -17,7 +17,7 @@
                         <i class="fa fa-dashboard"></i>  <a href="<%= request.getContextPath()%>/Menus/">Menus</a>
                 </li>
                 <li class="active">
-                    <i class="fa fa-edit"></i> First Level Menu
+                    <i class="fa fa-edit"></i> First Level Blog
                 </li>
             </ol>
         </div>
@@ -74,24 +74,49 @@
         <%}%>
 
         <div class="row">
-            <form role="form"id="form-validation-simple" action="<%= request.getContextPath()%>/Menus/firstlevelmenu/addblog" name="form-validation-simple" method="POST">
-                <div class="col-lg-6"> 
-                    <div class="form-group">
-                        <div class="col-lg-4">
-                            <label>First level blog name</label>
+            <% Long menuid = 0L;
+                if (request.getAttribute("menuid") != null) {
+                    menuid = (Long) request.getAttribute("menuid");
+                }%>
+            <form role="form"id="form-validation-simple" action="<%= request.getContextPath()%>/BlogsController/firstlevelmenu/addblog/<%= menuid%>" name="form-validation-simple" method="POST" enctype="multipart/form-data">
+                <div class="col-lg-12"> 
+                    <div class="col-lg-6"> 
+                        <% CheckInput checkInput = new CheckInput();%>
+                        <div class="form-group">
+                            <div class="col-lg-4">
+                                <label>Blog Title</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input class="form-control" name="blogname" <%= checkInput.checkValue(request.getParameter("blogname"))%> placeholder="Enter blog title">
+                            </div>
                         </div>
-                        <div class="col-lg-8">
-                            <input class="form-control" name="blogname" placeholder="Enter first level blog name">
+                        <div class="form-group"><br/><br/>
+                            <div class="col-lg-4">
+                                <label>Blog Image</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <input type="file" name="fileUpload">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <div class="col-lg-4">
+                                <label>Blog Description</label>
+                            </div>
+                            <div class="col-lg-8">
+                                <textarea  name="blogdescription"  rows="4" id="blogdescription"  class="form-control"><%= checkInput.checkValue(request.getParameter("blogdescription"))%></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-12"><br/>
                     <div class="form-group">
-                        <div class="col-lg-4">
-                            <label>First level blog path</label>
+                        <div class="col-lg-2">
+                            <label>Blog Details</label>
                         </div>
-                        <div class="col-lg-8">
-                            <input class="form-control" name="blogpath" placeholder="Enter first level blog path">
+                        <div class="col-lg-10">
+                            <textarea cols="5" rows="5" class="form-control" id="editor-inline" name="content" placeholder="Enter Blog Content"><%=checkInput.checkValue(request.getParameter("content"))%></textarea>
                         </div>
                     </div>
                 </div>
@@ -105,33 +130,42 @@
             <table id="first_level_blog" class="display" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>Menu Name</th>
-                        <th>Menu Path</th>
+                        <th>Blog Id</th>
+                        <th>Blog Title</th>
+                        <th>Blog Description</th>
+                        <th>Blog Image</th>
+                        <!--<th>Blog Details</th>-->
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Menu Name</th>
-                        <th>Menu Path</th>
+                        <th>Blog Id</th>
+                        <th>Blog Title</th>
+                        <th>Blog Description</th>
+                        <th>Blog Image</th>
+                        <!--<th>Blog Details</th>-->
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
 
-                    <%  CheckInput checkInput = new CheckInput();
+                    <%
                         if (request.getAttribute("blogs") != null) {
                             List<Blogs> blogss = (List<Blogs>) request.getAttribute("blogs");
                             if (!blogss.isEmpty()) {
                                 for (Blogs blogs : blogss) {%>
                     <tr>
                         <td><%= checkInput.checkValue(blogs.getBlogid())%></td>
-                        <td><%= checkInput.checkValue(blogs.getBlogid())%></td>
-                        <td><%= checkInput.checkValue(blogs.getBlogid())%></td>
+                        <td><%= checkInput.checkValue(blogs.getBlogtitle())%></td>
+                        <td><%= checkInput.checkValue(blogs.getBlogdescription())%></td>
+                        <td><%= checkInput.checkValue(blogs.getBlogimage())%></td>
+                        <td><%= checkInput.checkValue(blogs.getStatus())%></td>
+                        <%--<td><%= checkInput.checkValue(blogs.getBlogdetails())%></td>--%>
                         <td>
-                            <a class="btn btn-default" href="<%=request.getContextPath()%>/Menus/secondmenu/<%=blogs.getMenuid()%>">  Add Menu</a>
+                            <a class="btn btn-default" target="_blank" href="<%=request.getContextPath()%>/BlogsController/view/<%=blogs.getBlogid()%>">  View Blogs</a>
                         </td>
                     </tr>
                     <%
@@ -153,10 +187,22 @@
 <!-- /#wrapper -->
 
 <jsp:include page="../Template/Footer.jsp"></jsp:include>
-<script src="//code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/assets/ckeditor/ckeditor.js"></script>
 <script>
     $(document).ready(function () {
         $('#first_level_blog').DataTable();
+    });
+    $(function () {
+        CKEDITOR.replace('editor-inline');
+        CKEDITOR.disableAutoInline = true;
+
+//        CKEDITOR.inline('editor-inline');
+
+        $('#priority').select2({
+            minimumResultsForSearch: Infinity,
+            width: '100%'
+        });
     });
 </script>

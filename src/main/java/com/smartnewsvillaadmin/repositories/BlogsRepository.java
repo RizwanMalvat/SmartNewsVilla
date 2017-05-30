@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface BlogsRepository extends JpaRepository<Blogs, Long> {
 
-    List<Blogs> findByMenuidMenuidAndStatus(Long menuid, String status);
+    List<Blogs> findByMenuidFirstmenuidAndMenuidMenutypeAndStatus(Long menuid,String menuType, String status);
+
+    Blogs findByBlogidAndStatus(Long menuid, String status);
 }

@@ -134,6 +134,7 @@
                         <td><%= checkInput.checkValue(firstlevelmenu.getMenuname())%></td>
                         <td><%= checkInput.checkValue(firstlevelmenu.getMenuname())%></td>
                         <td>
+                            <a class="btn btn-default" href="<%=request.getContextPath()%>/BlogsController/thirdmenu/<%=firstlevelmenu.getFirstmenuid()%>">  Add Blog</a>
                         </td>
                     </tr>
                     <%

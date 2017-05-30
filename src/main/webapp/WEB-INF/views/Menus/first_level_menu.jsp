@@ -130,9 +130,9 @@
                         <td><%= checkInput.checkValue(firstlevelmenu.getMenuname())%></td>
                         <td><%= checkInput.checkValue(firstlevelmenu.getMenuname())%></td>
                         <td><%= checkInput.checkValue(firstlevelmenu.getMenuname())%></td>
-                        <td>
+                        <td> 
                             <a class="btn btn-default" href="<%=request.getContextPath()%>/Menus/secondmenu/<%=firstlevelmenu.getFirstmenuid()%>">  Add Menu</a>
-                            <a class="btn btn-default" href="<%=request.getContextPath()%>/Menus/Blogs/<%=firstlevelmenu.getFirstmenuid()%>">  Add Blog</a>
+                            <a class="btn btn-default" href="<%=request.getContextPath()%>/BlogsController/<%=firstlevelmenu.getFirstmenuid()%>">  Add Blog</a>
                         </td>
                     </tr>
                     <%

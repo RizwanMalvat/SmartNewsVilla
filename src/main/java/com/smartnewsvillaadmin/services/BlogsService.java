@@ -11,5 +11,7 @@ public interface BlogsService {
 
     void save(Blogs firstLevelMenu);
 
-    List<Blogs> findByMenuidMenuidAndStatus(Long menuid, String status);
+    List<Blogs> findByMenuidMenuidAndMenuidMenutypeAndStatus(Long menuid, String menuType, String status);
+
+    Blogs findByBlogidAndStatus(Long blogid, String status);
 }

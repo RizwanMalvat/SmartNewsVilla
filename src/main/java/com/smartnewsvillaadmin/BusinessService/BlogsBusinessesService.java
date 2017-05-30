@@ -16,15 +16,15 @@ public class BlogsBusinessesService {
 
     public void validate(HttpServletRequest request, List<String> errors) {
         ValidateUtils validateUtils = new ValidateUtils();
-        validateUtils.checkNull(request, "blogtitle", "Menu Name", errors);
-        validateUtils.checkNull(request, "blogdescription", "Menu Path", errors);
-        validateUtils.checkNull(request, "blogdetail", "Menu Path", errors);
+        validateUtils.checkNull(request, "blogname", "Blog Name", errors);
+        validateUtils.checkNull(request, "blogdescription", "Blog Path", errors);
+        validateUtils.checkNull(request, "content", "Blog details", errors);
     }
 
-    public void setFields(Blogs blogs, HttpServletRequest request){
-        blogs.setBlogtitle(request.getParameter("blogtitle"));
+    public void setFields(Blogs blogs, HttpServletRequest request) {
+        blogs.setBlogtitle(request.getParameter("blogname"));
         blogs.setBlogdescription(request.getParameter("blogdescription"));
-        blogs.setBlogdetails(request.getParameter("blogdetail"));
+        blogs.setBlogdetails(request.getParameter("content"));
         blogs.setStatus(Constant.ACTIVE);
     }
 

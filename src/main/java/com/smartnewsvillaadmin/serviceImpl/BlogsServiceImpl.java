@@ -27,7 +27,12 @@ public class BlogsServiceImpl implements BlogsService {
     }
 
     @Override
-    public List<Blogs> findByMenuidMenuidAndStatus(Long menuid, String status) {
-        return blogsRepository.findByMenuidMenuidAndStatus(menuid,status);
+    public List<Blogs> findByMenuidMenuidAndMenuidMenutypeAndStatus(Long menuid, String menuType, String status) {
+        return blogsRepository.findByMenuidFirstmenuidAndMenuidMenutypeAndStatus(menuid, menuType, status);
+    }
+
+    @Override
+    public Blogs findByBlogidAndStatus(Long blogid, String status) {
+        return blogsRepository.findByBlogidAndStatus(blogid, status);
     }
 }
