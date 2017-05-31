@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes:target/dependency/SmartNewsVilla-Admin-1.0-SNAPSHOT
+web: sh target/bin/webapp
